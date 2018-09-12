@@ -13,3 +13,5 @@ function partialApplication(func) {
     }
   }
 }
+
+// strictly speaking this is not currying because currying can take only one argument at a time, and partial application can take many and will partially apply them all in one go
