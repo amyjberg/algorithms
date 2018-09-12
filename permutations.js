@@ -1,13 +1,29 @@
-/* Generating all full-length permutations of a string */
-
 // Iterative Solution
 function getPermutations(string) {
+  const letters = str.split('') // yields array of all the letters
+  let results = [ [letters.shift()] ] // accomplishes two things at once -- we remove the first letter from the letters array and also add it to the first array element of the results array
 
+  // we continue looping while there are still letters we haven't shifted off of our letters array
+  while(letters.length) {
+    const currentLetter = letters.shift()
+    const temporaryResults = []
 
+    // our results permutations are unfinished, so we will add our current letter in at every possible position
+    results.forEach(result => {
+      for (let i = 0; i <= result.length; i++) {
+        // we have an unfinished permutation, so let's insert our current letter
+        const resultCopy = result.slice() // so we don't mutate our result!
+        resultCopy.splice(i, 0, currentLetter)
+        temporaryResults.push(resultCopy)
+      }
+    })
+    results = temporaryResults // we update results to be the array of new permutations
+    // if we just finished the last letter, we break out of the loop. otherwise we continue
+  }
+  return results.map(letterArray => letterArray.join(''))
 }
 
-
-// Recursive Solution
+// Recursive Solution -- I find it more intuitive than the iterative solution
 function getPermutationsRec(string) {
   const permutations = []
   if (string.length === 1) {
