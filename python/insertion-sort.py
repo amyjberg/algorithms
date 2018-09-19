@@ -12,14 +12,13 @@ def insert(sortedArray, element): # O(n) time complexity
         array[x] = None # move the 'None' over so it occupies the space that we'll scoot the next element
   return array
 
-# function insertionSort(array) {
-# 	for (let i = 1; i < array.length; i++) {
-# 		const sortedSubArr = array.slice(0, i)
-# 		const inserted = insert(sortedSubArr, array[i])
-# 		const rest = array.slice(i + 1)
-# 		array = [...inserted, ...rest]
-# 	}
-# 	return array
-# }
+def insertionSort(array):
+  for x in xrange(1, len(array)):
+    # starts at the smallest subarray and inserts the next element into the correct place
+    subArray = array[0: x]
+    inserted = insert(subArray, array[x])
+    rest = array[x + 1:]
+    array = inserted + rest # can use + to concatenate arrays
+  return array
 
 
