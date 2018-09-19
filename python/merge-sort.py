@@ -4,7 +4,6 @@
 # continue merging every two subarrays until we just have one sorted array
 
 def mergeSorted(listA, listB):
-  # assume neither are empty
   pointerA = 0
   pointerB = 0
   merged = []
@@ -30,3 +29,9 @@ def mergeSorted(listA, listB):
   else:
     # we finished both
     return merged
+
+def mergeSort(list):
+  # need to split it up into array of single-element arrays
+  # then merge every two together and have new array of two-element arrays
+  # then merge every two together and have new array of four-element arrays
+  # continue until we're left with only one array
