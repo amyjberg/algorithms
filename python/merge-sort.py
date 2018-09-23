@@ -9,7 +9,6 @@ def mergeSorted(listA, listB):
   merged = []
   while pointerA < len(listA) and pointerB < len(listB):
     # we break out of the loop once one pointer finishes its list
-    print('inside while loop')
     if listA[pointerA] < listB[pointerB]:
       merged.append(listA[pointerA]) # modifies original list
       pointerA += 1
@@ -30,8 +29,18 @@ def mergeSorted(listA, listB):
     # we finished both
     return merged
 
+def split(list):
+  mid = Math.floor(len(list) / 2)
+  leftHalf = list[0:mid]
+  rightHalf = list[mid:]
+  return [leftHalf, rightHalf]
+
 def mergeSort(list):
-  # need to split it up into array of single-element arrays
-  # then merge every two together and have new array of two-element arrays
-  # then merge every two together and have new array of four-element arrays
-  # continue until we're left with only one array
+  if len(list) == 1 | len(list) == 0:
+    return list
+  else:
+    halves = split(list)
+    left = halves[0]
+    right = halves[1]
+    # recursive call on each half, so each half will get split into half until we get to our base case with length 1, when we will start merging them
+    return merge(mergeSort(left), mergeSort(right))
